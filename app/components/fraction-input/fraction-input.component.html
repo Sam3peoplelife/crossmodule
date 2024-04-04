@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Fraction Calculator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="fractionForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating">Numerator 1</ion-label>
+          <ion-input formControlName="numerator1" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Denominator 1</ion-label>
+          <ion-input formControlName="denominator1" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Numerator 2</ion-label>
+          <ion-input formControlName="numerator2" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Denominator 2</ion-label>
+          <ion-input formControlName="denominator2" type="number" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select formControlName="operation">
+            <ion-select-option value="add">Додавання</ion-select-option>
+            <ion-select-option value="subtract">Віднімання</ion-select-option>
+            <ion-select-option value="multiply">Множення</ion-select-option>
+            <ion-select-option value="divide">Ділення</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-button type="submit" [disabled]="!fractionForm.valid" expand="block">Calculate</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="result">
+    <ion-card-content>
+      <ion-label>Result:</ion-label>
+      <ion-label>{{ result.numerator }} / {{ result.denominator }}</ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
